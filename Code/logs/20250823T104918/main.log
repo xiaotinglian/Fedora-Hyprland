@@ -1,0 +1,12 @@
+2025-08-23 10:49:19.028 [info] update#setState idle
+2025-08-23 10:49:49.019 [info] update#setState checking for updates
+2025-08-23 10:49:49.296 [info] update#setState available for download
+2025-08-23 10:54:16.817 [info] update#setState idle
+2025-08-23 10:54:42.066 [info] update#setState checking for updates
+2025-08-23 10:54:42.672 [info] update#setState available for download
+2025-08-23 10:54:44.513 [info] update#setState idle
+2025-08-23 11:09:16.935 [info] update#setState checking for updates
+2025-08-23 11:09:17.201 [info] update#setState available for download
+2025-08-23 11:09:24.917 [info] update#setState idle
+2025-08-23 11:10:32.937 [info] Extension host with pid 3186 exited with code: 0, signal: unknown.
+2025-08-23 11:10:33.012 [error] [UtilityProcess id: 1, type: fileWatcher, pid: 3185]: crashed with code 15 and reason 'killed'

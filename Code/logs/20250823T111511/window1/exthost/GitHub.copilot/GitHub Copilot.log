@@ -1,0 +1,5 @@
+2025-08-23 11:21:52.651 [info] [certificates] Removed 3 expired certificates
+2025-08-23 11:21:53.233 [info] [fetcher] Using Helix fetcher.
+2025-08-23 11:21:53.233 [info] [code-referencing] Public code references are enabled.
+2025-08-23 11:21:53.522 [info] [fetcher] Using Helix fetcher.
+2025-08-23 11:22:52.811 [warning] [relatedFiles] unknown language json
