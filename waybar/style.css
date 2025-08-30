@@ -73,18 +73,9 @@ window#waybar.hidden {
 
 #clock,
 #battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
 #wireplumber,
 #custom-media,
 #mode,
-#idle_inhibitor,
-#mpd,
 #bluetooth,
 #custom-hyprPicker,
 #custom-power-menu,
@@ -105,17 +96,6 @@ window#waybar.hidden {
     padding: 3px;  /* Reduced padding */
 }
 
-#custom-screenshot_t {
-    background-color: #111827;
-    border-radius: 14px;
-    padding: 3px;
-}
-
-#custom-spotify {
-    background-color: #111827;
-    border-radius: 14px;
-    padding: 2px 8px;
-}
 
 #tray {
     background-color: #111827;
@@ -123,25 +103,8 @@ window#waybar.hidden {
     padding: 3px;
 }
 
-#cpu {
-    color: #fb958b;
-    background-color: #111827;
-    padding: 3px;
-}
-
-#memory {
-    color: #ebcb8b;
-    background-color: #111827;
-    padding: 3px;
-}
 
 #custom-power {
-    background-color: #111827;
-    border-radius: 14px;
-    padding: 3px;
-}
-
-#custom-storage {
     background-color: #111827;
     border-radius: 14px;
     padding: 3px;
@@ -199,10 +162,6 @@ window#waybar.hidden {
     color: #7d9bba;
 }
 
-#backlight {
-    color: #8fbcbb;
-}
-
 #clock {
     color: #c8d2e0;
 }
@@ -237,10 +196,6 @@ label:focus {
     background-color: #000000;
 }
 
-#disk {
-    background-color: #964b00;
-}
-
 #bluetooth {
     color: #707d9d;
 }
@@ -263,22 +218,6 @@ label:focus {
     min-width: 100px;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
@@ -286,23 +225,6 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 0px;
-    margin: 0 3px;
-    min-width: 16px;
 }
 
 #keyboard-state {
