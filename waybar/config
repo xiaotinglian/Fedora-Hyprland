@@ -1,91 +1,44 @@
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
 
     "layer": "top",
 
     "position": "top",
 
-    //"height": 20,
-
     "margin-left": 10,
     "margin-bottom": 0,
     "margin-right": 10,
 
-    "spacing": 5, // Gaps between modules (4px)
+    "spacing": 5, 
 
     "modules-left": [
-        "custom/rofi",
-        "custom/weather"
+        "custom/weather",
+        "clock"
     ],
     "modules-center": [
-        "hyprland/workspaces",
-        "tray"
+        "custom/lizzy",
+        "hyprland/workspaces"
         
     ],
     "modules-right": [
-        "battery",
+        "tray",
+        "network",
+        "bluetooth", 
         "wireplumber",
-        "clock#date",
+        "custom/notification",
         "custom/power"
     ],
 
-
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
-
-    "custom/rofi": {
-        "format": "",
-        "tooltip": false,
-        "on-click-right": "nwg-drawer",
-        "on-click": "wofi --show run",
-        "on-click-middle": "pkill -9 wofi"
-    },
-
-    "battery": {
-        "interval": 2,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-
     "custom/weather": {
         "format": "{}",
-        "format-alt": "{alt}: {} ",
+        "format-alt": "{alt}:{} ",
         "format-alt-click": "click-right",
         "interval": 3600,
-        "exec": "curl -s 'https://wttr.in/?format=1'",
-        "exec-if": "ping wttr.in -c1"
-    },
-
-    "custom/power": {
-        "format": " 󰐥 ",
-        "tooltip": false,
-        "on-click": "wlogout"
+        "restart-interval": 5,
+        "exec": "curl -s 'https://wttr.in/?format=1'"
     },
 
     "clock": {
-        "format": "  {:%H:%M   %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>"
-    },
-
-    "clock#date": {
-        "format": "󰥔  {:%H:%M   %e %b}",
+        "format": "󰥔 {:%H:%M   %e %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>"
     },
@@ -93,28 +46,102 @@
     "wireplumber": {
         "on-click": "pavucontrol",
         "on-click-right": "amixer sset Master toggle 1>/dev/null",
-        //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
-        //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
-        "format": "<span foreground='#fab387'>{icon}</span>  {volume}%",
+        "format": "<span foreground='#fab387'>{icon}</span>{volume}%",
         "format-muted": " ",
         "format-source": "",
         "format-source-muted": "",
-        //"format-muted": "<span foreground='#fab387'> </span>",
-        //"format-icons": [ "<span foreground='#fab387'></span>" ]
         "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
+            "headphone": "󰋋",
+            "hands-free": "󱡏",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰦧",
+            "car": "󰄋",
             "default": [" ", " ", " "]
-        },
+        }
     },
-
+    "bluetooth": {
+        "format": "{icon} {status}",
+        "format-disabled": "󰂲 Off",
+        "format-off": "󰂲 Off",
+        "format-on": "󰂯 On",
+        "format-connected": "󰂱 {device_alias}",
+        "format-connected-battery": "󰂱 {device_alias} ({device_battery_percentage}%)",
+        "format-icons": {
+            "enabled": "󰂯",
+            "disabled": "󰂲",
+            "off": "󰂲",
+            "on": "󰂯",
+            "connected": "󰂱",
+            "discoverable": "󰂰",
+            "discovering": "󰂴",
+            "pairable": "󰂰"
+        },
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t({device_battery_percentage}%)",
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl power toggle"
+    },
     "tray": {
         "icon-size": 15,
         "spacing": 5
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": "{icon}",
+        "format-ethernet": "{icon}",
+        "format-disconnected": "{icon}",
+        "format-alt": "{icon}",
+        "format-icons": {
+            "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+            "ethernet": "",
+            "disconnected": "󰤭"
+        },
+        "on-click": "nm-connection-editor"
+    },
+    "custom/lizzy": {
+        "format": "{icon} {text}",
+        "exec": "lizzy --format '{{title}}: {{artist}}' --autotoggle",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "format-icons": {
+            "Playing": " 󰐊",
+            "Paused": " 󰏤"
+        },
+        "max-length": 45,
+        "tooltip": false,
+        "escape": true
+    },
+    "custom/power": {
+        "format": " 󰐥 ",
+        "tooltip": false,
+        "on-click": "wlogout"
+
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "  <span foreground='red'><sup></sup></span>",
+            "none": "  ",
+            "dnd-notification": "  <span foreground='red'><sup></sup></span>",
+            "dnd-none": "  ",
+            "inhibited-notification": "  <span foreground='red'><sup></sup></span>",
+            "inhibited-none": "  ",
+            "dnd-inhibited-notification": "  <span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": "  "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }
